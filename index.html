@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación - Fede & Anto</title>
+    <!-- Agrega los enlaces a Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5fa url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="rgba(200,200,220,0.2)"/></svg>') repeat;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            scroll-snap-type: y proximity;
+            overflow-y: scroll;
+            height: 100vh;
+        }
+        .section {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            scroll-snap-align: center;
+        }
+        .main {
+            background: url('flowers1.jpg') no-repeat center/cover;
+            color: #371e45;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+        .main h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .main h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        #countdown {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .section img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+        .section p {
+            font-size: 1.1em;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        form input, form textarea {
+            padding: 10px;
+            font-size: 1em;
+        }
+        form button {
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .footer-message {
+            padding: 20px;
+            font-size: 1.2em;
+            color: #e91e63;
+        }
+        .show-data-btn {
+            padding: 10px 20px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .show-data-btn:hover {
+            background-color: #c2185b;
+        }
+        .data-info {
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.6s ease-out;
+        }
+        .data-info.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: bounce 0.3s ease-out;
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 600px) {
+            .main h1 { font-size: 1.8em; }
+            .main h2 { font-size: 1.2em; }
+            .section h3 { font-size: 1.5em; }
+            .section p { font-size: 1em; }
+            .gallery { width: 90%; }
+            form { width: 90%; }
+            .section img { width: 80px; height: 80px; }
+            #countdown { font-size: 1em; }
+            .footer-message { font-size: 1em; }
+            .show-data-btn { font-size: 0.9em; padding: 8px 16px; }
+            .data-info { font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sección 1: Presentación (Main) -->
+        <div class="section main">
+            <h1>Fede Ferreyra & Anto Pantalones</h1>
+            <h2>¡Nos casados!</h2>
+            <div id="countdown"></div>
+        </div>
+
+        <!-- Sección 2: Ceremonia -->
+        <div class="section">
+            <img src="https://png.pngtree.com/png-vector/20240126/ourmid/pngtree-wedding-ceremony-celebration-png-image_11551326.png" alt="Decoration">
+            <h3>CEREMONIA</h3>
+            <p>21 de marzo 2026 - 20:00hs</p>
+        </div>
+
+        <!-- Sección 3: Cena -->
+        <div class="section">
+            <img src="https://e1.pxfuel.com/desktop-wallpaper/406/336/desktop-wallpaper-transparent-john-cena-png-png-wwe-john-cena.jpg" alt="Decoration">
+            <h3>CENA</h3>
+            <p>22:00hs</p>
+        </div>
+
+        <!-- Sección 4: Código de Vestimenta -->
+        <div class="section">
+            <img src="https://w7.pngwing.com/pngs/41/840/png-transparent-black-tie-dress-code-little-black-dress-clothing-graphy-dress-text-hand-fashion-thumbnail.png" alt="Decoration">
+            <h3>CÓDIGO DE VESTIMENTA</h3>
+        </div>
+
+        <!-- Sección 5: Regalo -->
+        <div class="section">
+            <img src="https://img.freepik.com/vector-gratis/gente-celebrando-juntos-tema-ilustracion_23-2148409129.jpg?semt=ais_hybrid&w=740&q=80" alt="Decoration">
+            <h3>El mejor regalo es celebrar juntos</h3>
+            <p>Si querés apoyarnos con un mimo extra te dejamos nuestro CBU</p>
+            <button class="show-data-btn">Mostrar Datos 🐒</button>
+            <div class="data-info" style="display: none;">
+                Titular: Anto<br>
+                CBU: 1029103<br>
+                Alias: pepin<br>
+                Banco: galicia
+            </div>
+        </div>
+
+        <!-- Sección 6: Fotos -->
+        <div class="section">
+            <div class="gallery">
+                <img src="https://media.istockphoto.com/id/1162358018/es/foto/joven-brasile%C3%B1o-con-camiseta-azul-de-pie-sobre-fondo-blanco-aislado-cara-feliz-sonriendo-con.jpg?s=612x612&w=0&k=20&c=x9tbbjYh_SkUCZJegFLbY9a_AJIYtQmIiDpVEeGvuig=" alt="Photo 1">
+                <img src="https://www.shutterstock.com/image-photo/young-handsome-latin-man-wearing-260nw-1771993703.jpg" alt="Photo 2">
+                <img src="https://img.freepik.com/fotos-premium/hombre-latino-joven-pared-amarilla-feliz-sonriendo-alegre_1187-78349.jpg" alt="Photo 3">
+                <img src="https://st.depositphotos.com/1662991/4897/i/450/depositphotos_48979343-stock-photo-bride-and-groom-behind-her.jpg" alt="Photo 4">
+            </div>
+        </div>
+
+        <!-- Sección 7: Confirmación de Asistencia -->
+        <div class="section">
+            <h3>Confirmá tu asistencia</h3>
+            <p>Ojalá puedas venir</p>
+            <form>
+                <input type="text" placeholder="Nombre y Apellido" required>
+                <select name="attendance">
+                    <option value="yes">Asistiré</option>
+                    <option value="no">No podré asistir</option>
+                </select>
+                <textarea placeholder="Mensaje extra (opcional)" rows="4"></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <p>♥ ¡Gracias por todo! Fede y Anto ♥</p>
+        </div>
+
+        <!-- Mensaje final -->
+        <div class="footer-message">
+            Hecho con ♥ por kuniBodas.
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date("March 21, 2026 20:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "¡Ya casados!";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Ajustar scroll para iniciar en la primera sección
+        window.addEventListener('load', () => {
+            document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        // Controlar el scroll con la ruedita del mouse con animación suave
+        const container = document.querySelector('.container');
+        const sections = document.querySelectorAll('.section');
+        const duration = 1300; // Duración de la animación en milisegundos (ajustable)
+
+        let animationFrameId = null;
+
+        function smoothScrollTo(targetSection) {
+            const startTime = performance.now();
+            const startPos = container.scrollTop;
+            const targetPos = targetSection.offsetTop;
+
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1); // Progreso de 0 a 1
+                const ease = easeInOutQuad(progress); // Función de easing para suavidad
+                container.scrollTop = startPos + (targetPos - startPos) * ease;
+
+                if (progress < 1) {
+                    animationFrameId = requestAnimationFrame(animate);
+                } else {
+                    container.scrollTop = targetPos; // Asegura que termine exactamente en la posición
+                }
+            }
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        // Función de easing (suavizado)
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        container.addEventListener('wheel', (event) => {
+            event.preventDefault(); // Evita el comportamiento por defecto del scroll
+            const delta = event.deltaY * 0.5; // Ajusta este factor (e.g., 0.5 para ralentizar, 1.5 para acelerar)
+
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId); // Cancela la animación anterior si está en curso
+            }
+
+            const currentSection = Array.from(sections).find(section => {
+                return container.scrollTop >= section.offsetTop - 10 && container.scrollTop < section.offsetTop + section.offsetHeight;
+            });
+
+            if (currentSection) {
+                const currentIndex = Array.from(sections).indexOf(currentSection);
+                let targetSection = null;
+
+                if (delta > 5 && currentIndex < sections.length - 1) { // Scroll hacia abajo (umbral ajustado)
+                    targetSection = sections[currentIndex + 1];
+                } else if (delta < -5 && currentIndex > 0) { // Scroll hacia arriba (umbral ajustado)
+                    targetSection = sections[currentIndex - 1];
+                }
+
+                if (targetSection) {
+                    smoothScrollTo(targetSection);
+                }
+            }
+        });
+
+        // Control del botón "Mostrar Datos"
+        const showDataBtn = document.querySelector('.show-data-btn');
+        const dataInfo = document.querySelector('.data-info');
+
+        showDataBtn.addEventListener('click', () => {
+            if (dataInfo.style.display === 'none' || dataInfo.style.display === '') {
+                dataInfo.style.display = 'block';
+                setTimeout(() => {
+                    dataInfo.classList.add('show');
+                }, 10); // Pequeño retraso para iniciar la animación
+            } else {
+                dataInfo.classList.remove('show');
+                setTimeout(() => {
+                    dataInfo.style.display = 'none';
+                }, 600); // Duración de la transición para ocultar
+            }
+        });
+    </script>
+</body>
+</html>
