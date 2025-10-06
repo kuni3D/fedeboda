@@ -16,6 +16,8 @@
             color: #333;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
+            overflow: hidden; /* Para contener los pétalos */
         }
         .container {
             width: 100%;
@@ -30,6 +32,8 @@
             scroll-snap-type: y proximity;
             overflow-y: scroll;
             height: 100vh;
+            position: relative; /* Para superponer pétalos */
+            z-index: 1;
         }
         .section {
             width: 100%;
@@ -40,6 +44,7 @@
             justify-content: center;
             padding: 20px;
             scroll-snap-align: center;
+            position: relative;
         }
         .main {
             background: url('flowers1.jpg') no-repeat center/cover;
@@ -138,6 +143,20 @@
             100% { transform: translateY(0); }
         }
 
+        /* Estilos para los pétalos */
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            pointer-events: none; /* Evita interferencia con clics */
+            z-index: 0;
+        }
+        .petal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* Media Queries para responsividad */
         @media (max-width: 600px) {
             .main h1 { font-size: 1.8em; }
@@ -151,6 +170,7 @@
             .footer-message { font-size: 1em; }
             .show-data-btn { font-size: 0.9em; padding: 8px 16px; }
             .data-info { font-size: 0.9em; }
+            .petal { width: 30px; height: 30px; }
         }
     </style>
 </head>
@@ -252,6 +272,7 @@
         // Ajustar scroll para iniciar en la primera sección
         window.addEventListener('load', () => {
             document.querySelector('.main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            createPetals(); // Inicia la creación de pétalos al cargar
         });
 
         // Controlar el scroll con la ruedita del mouse con animación suave
@@ -332,6 +353,43 @@
                 }, 600); // Duración de la transición para ocultar
             }
         });
+
+        // Función para crear y animar pétalos
+        function createPetals() {
+            const petalImages = ['petalo1.png', 'petalo2.png', 'petalo3.png', 'petalo4.png'];
+            const numPetals = 10; // Número de pétalos que caen
+
+            for (let i = 0; i < numPetals; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                const img = document.createElement('img');
+                img.src = petalImages[Math.floor(Math.random() * petalImages.length)]; // Imagen aleatoria
+                petal.appendChild(img);
+
+                // Posición inicial aleatoria en la parte superior
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.top = Math.random() * -200 + 'px'; // Comienza fuera de la pantalla arriba
+
+                // Rotación y velocidad aleatorias
+                const rotation = Math.random() * 360;
+                const animationDuration = Math.random() * 5 + 5; // Entre 5 y 10 segundos
+
+                petal.style.transform = `rotate(${rotation}deg)`;
+                petal.style.animation = `fall ${animationDuration}s linear infinite`;
+
+                document.body.appendChild(petal);
+            }
+        }
+
+        // Animación de caída
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg); /* Caída completa con rotación */
+            }
+        }
     </script>
 </body>
 </html>
